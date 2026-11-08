@@ -16,19 +16,19 @@ jobs:
       - name: Install makerom & bannertool
         run: |
           apt-get update && apt-get install -y wget unzip
-          
+
           # Create a local tools directory in the workspace to avoid permission errors
           mkdir -p tools/bin
-          
+
           # Download and extract makerom locally
           wget -q https://github.com/3DSGuy/Project_CTR/releases/download/makerom-v0.18.4/makerom-v0.18.4-ubuntu_x86_64.zip -O /tmp/makerom.zip
           unzip -o /tmp/makerom.zip -d tools/bin/
           chmod +x tools/bin/makerom
-          
+
           # Download and extract bannertool locally
-          wget -q https://github.com/Steveice10/bannertool/releases/download/1.2.0/bannertool.zip -O /tmp/bannertool.zip
+          wget -q https://github.com/diasurgical/bannertool/releases/download/1.2.0/bannertool.zip -O /tmp/bannertool.zip
           unzip -o -j /tmp/bannertool.zip linux-x86_64/bannertool -d tools/bin/
-          chmod +x bannertool/bin/bannertool || chmod +x tools/bin/bannertool
+          chmod +x tools/bin/bannertool
 
       - name: Compile exo.3dsx and exo.cia
         run: |
